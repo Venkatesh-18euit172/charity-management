@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>CGPA</title>
+		<script type="text/javascript">
+		
+			function getSubject(val) {
+				if(val=="")
+						return ;
+				var ob=new XMLHttpRequest();
+				ob.onreadystatechange=function ss()
+		        {
+					if(ob.readyState==4)
+					{
+						document.getElementById("credits").innerHTML=ob.responseText;
+						document.getElementById("cgpa1").innerHTML="0.0";
+					}
+		        }
+				var path="Cgpa?semester="+val;
+
+		        ob.open("POST",path,false);
+		        ob.send();
+		        return true;
+			}
+			
+			function getCgpa() {
+				
+				var ob=new XMLHttpRequest();
+				ob.onreadystatechange=function ss()
+		        {
+					if(ob.readyState==4)
+					{
+						document.getElementById("cgpa1").innerHTML=ob.responseText;
+					}
+		        }
+				
+				var path="CgpaCalculate";
+	
+		        ob.open("POST",path,false);
+		        ob.send();
+		        return true;
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<form name="cgpa" action="" method="post">
+			Semester : 
+			<select name="semester" onchange="getSubject(this.value)">
+				<option>Select</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+			</select>
+			<br><br>
+			<div id="credits"></div>
+			<br><br> 
+			<label id="cgpa1"></label>
+		</form><br><br>
+		<br><br>
+		<button onclick="getCgpa()">Calculate</button>
+		<button onclick="getGraph()">My Performance</button>
+		<br><br>
+		<canvas id="myCanvas" width="900" height="300" style="border:1px solid #c3c3c3;">
+	    </canvas>
+	</body>
+</html>
