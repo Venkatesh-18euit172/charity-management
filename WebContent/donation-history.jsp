@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -74,8 +75,8 @@
 	  	</div>
 		
 		<%
-		
-		ArrayList<ArrayList<String>> req =new DonorDao().showDonation("18euit157@skcet.ac.in"); %>
+		 String mailid=(String)session.getAttribute("donormailid");
+		ArrayList<ArrayList<String>> req =new DonorDao().showDonation(mailid); %>
 		   	
 		   	<table>
 		          	<tr> 

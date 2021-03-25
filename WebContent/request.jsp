@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 	<html>
 		<head>
@@ -112,16 +113,20 @@
 	                        
 	                         <a href="request.jsp" class="nav__link">
 	                            <ion-icon name="add-circle-outline" class="nav__icon"></ion-icon>
-	                            <span class="nav__name">Rise Request</span>
+	                            <span class="nav__name">Raise Request</span>
 	                        </a>
 	
 	                        <a href="ngo-request.jsp" class="nav__link">
 	                            <ion-icon name="eye-outline" class="nav__icon"></ion-icon>
-	                            <span class="nav__name">View Donation</span>
+	                            <span class="nav__name">Pending Requests</span>
 	                        </a>
 	                       
+	                        <a href="successful-donations.jsp" class="nav__link">
+	                            <ion-icon name="ribbon-outline" class="nav__icon"></ion-icon>
+	                            <span class="nav__name">Successful donations</span>
+	                        </a>
 	
-	                        <a href="request-history.jsp" class="nav__link">
+	                        <a href="ngo-history.jsp" class="nav__link">
 	                            <ion-icon name="book-outline" class="nav__icon"></ion-icon>
 	                            <span class="nav__name">Donation History</span>
 	                        </a>

@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 import service.NgoDao;
 
 /**
- * Servlet implementation class DonationList
+ * Servlet implementation class SuccessfulDonorList
  */
-@WebServlet("/DonationList")
-public class DonationList extends HttpServlet {
+@WebServlet("/SuccessfulDonorList")
+public class SuccessfulDonorList extends HttpServlet {
 	
-	private static final long serialVersionUID = 1L;
-       
- 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
- 		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+
  		int id=Integer.parseInt(request.getParameter("id"));
- 		System.out.println(id);
+ 		//System.out.println(id);
  		ArrayList<ArrayList<String>> a=new NgoDao().donationList(id);
- 		ArrayList<String> b=new NgoDao().requestDetails(id);
+ 		ArrayList<String> b=new NgoDao().requestDescription(id);
  				
  		request.setAttribute("Donation-List", a);
  		request.setAttribute("Request Details", b);
  		getServletConfig().getServletContext().getRequestDispatcher("/donation-list.jsp").forward(request,response);
 	}
+
 }

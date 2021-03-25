@@ -3,6 +3,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <% 
+     String mailid=(String)session.getAttribute("mailid");
+	if(mailid.equals(" "))
+	{
+		response.sendRedirect("login.jsp");
+	}
+    %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -101,7 +108,7 @@
 		   <%for(int i=0;i<req.size();i++)
 		   {
 				String date[]=String.valueOf(req.get(i).getExpected_date()).split("-");
-				String yyyy=date[0];String dd=date[1];String mm=date[2];
+				String yyyy=date[0];String mm=date[1];String dd=date[2];
 			   %>
 			   	<tr> <td style= "width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"> <%=i+1 %> </td> 
 	            <td style= "width : 200px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><%=req.get(i).getType_of_request()%></td>

@@ -3,6 +3,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@page import="model.Ngo"%>
 <%@page import="java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -67,11 +68,16 @@
 	<body id="body-pd">
 			<%
 	ArrayList<Ngo> allNgo = new NgoDao().getAllNgo();
-
+    if(allNgo.size()==0)
+    {
+    	%>
+    	   No NGOs available!
+    	<%
+    }
+    else
+    {
 	for (Ngo ngo: allNgo) {
 	
-		if(!ngo.getStatus().equals("Accepted"))
-		{
 	%>
 
 	<div style="margin: 30px 2%; width:45%; display: inline-block; border-radius: 10px; background: linear-gradient(to bottom, #ffff66 0%, #ff99cc 100%); text-align: center;">
@@ -89,6 +95,7 @@
 		</div>
 	</div>
 	<% }}%>
+	
 	
 	<div class="l-navbar" id="navbar">
 	            <nav class="nav">

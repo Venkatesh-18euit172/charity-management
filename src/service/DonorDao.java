@@ -82,7 +82,7 @@ public class DonorDao {
 	}
 	
 	public ArrayList<ArrayList<String>> showDonation(String email)
-	{
+	{   System.out.println(email);
 		ArrayList<ArrayList<String>> result=new ArrayList<ArrayList<String>>();
 		String query="SELECT request.type_of_request ,  donation.donated_quantity , donation.measurements , donation.donated_date , ngo.Name , ngo.Address , ngo.Mobile_Number ,request.ngo_email, request.request_details  FROM donation INNER JOIN request on donation.donation_id=request.id INNER JOIN ngo on request.ngo_email=ngo.User_email where donation.donor_email=?";
 		try

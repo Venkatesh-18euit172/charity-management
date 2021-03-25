@@ -7,11 +7,15 @@
 		<title>Login</title>
 	</head>
 	<body>
-		<form action="">
-			User email : <input type="text"></input><br><br>
-			Password : <input type="password"></input><br><br>
-			<input type="radio" id="admin" name="user" value="admin">
-			<label for="admin">Admin</label>
+	  <% 
+	   
+	   String value=request.getParameter("flag");
+	   if(value!=null && value.equals("1"))
+		    out.print("Invalid credentials");
+	  %>
+		<form action="Login" method="post">
+			User email : <input type="text" name="mailid"></input><br><br>
+			Password : <input type="password" name="password"></input><br><br>
 			<input type="radio" id="ngo" name="user" value="ngo">
 			<label for="ngo">NGO</label>
 			<input type="radio" id="donor" name="user" value="donor">

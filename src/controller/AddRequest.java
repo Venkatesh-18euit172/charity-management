@@ -28,8 +28,8 @@ public class AddRequest extends HttpServlet {
 		int count=Integer.parseInt(request.getParameter("no_of_request"));
 		for(int i=0;i<count;i++)
 		{
-			//Session take the value of email
-			String ngo_email="18euit172@skcet.ac.in";
+			
+			String ngo_email=(String)session.getAttribute("mailid");
 			String type_of_request=request.getParameter("request_"+i);
 			int total_quantity=Integer.parseInt(request.getParameter("quantity_"+i));
 			String measurements=request.getParameter("measurement_"+i);

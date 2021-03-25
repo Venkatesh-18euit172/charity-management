@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import service.DonorDao;
 
@@ -22,8 +23,9 @@ public class DonationPiechart extends HttpServlet {
        
    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-   		//Session email use
-   		TreeMap<String,Integer> a=new DonorDao().showPiechart("18euit157@skcet.ac.in");
+   		HttpSession session=request.getSession();
+   		String mailid=(String)session.getAttribute("donormailid");
+   		TreeMap<String,Integer> a=new DonorDao().showPiechart(mailid);
    		String details="";
    		for(Map.Entry<String, Integer> i:a.entrySet())
    		{

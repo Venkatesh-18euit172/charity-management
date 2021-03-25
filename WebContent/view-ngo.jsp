@@ -1,8 +1,10 @@
+
 <%@page import="model.Ngo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="service.NgoDao"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+   
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,12 +18,11 @@
 	</head>
 	<body id="body-pd">
 		<%
-		ArrayList<Ngo> allNgo = new NgoDao().getAllNgo();
+		ArrayList<Ngo> allNgo = new NgoDao().getAcceptedNgo();
 	
 		for (Ngo ngo: allNgo) {
 		
-			if(ngo.getStatus().equals("Accepted"))
-			{
+			
 		%>
 	
 		<div style="margin: 30px 2%; width:45%; display: inline-block; border-radius: 10px; background:linear-gradient(to bottom, #66ff99 0%, #00ccff 100%); text-align: center;">
@@ -34,7 +35,7 @@
 				<a href="<%=ngo.getDocument_Link() %>" style="color: #000;font-family: verdana;font-size: 20px;text-decoration: none;">click here to know more</a>				
 			</div>
 		</div>
-		<% }}%>
+		<% }%>
 		
 		<div class="l-navbar" id="navbar">
 	            <nav class="nav">
@@ -82,6 +83,7 @@
 	       
 	        <!-- ===== MAIN JS ===== -->
 	        <script src="js/main.js"></script>
+
 		
 	</body>
 </html>

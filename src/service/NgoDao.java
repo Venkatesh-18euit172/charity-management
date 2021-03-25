@@ -11,9 +11,10 @@ public class NgoDao {
 
 	private static final String getNgo="select * from ngo where User_email = ? ";
 	private static final String deleteNgo="Delete from ngo where User_email = ? ";
-	private static final String getAllNgo="select * from ngo";
+	private static final String getAcceptedNgo="select * from ngo where status='Accepted'";
+	private static final String getAllNgo="select * from ngo where status!='Accepted'";
 	private static final String storeLogin="insert into login values (?,?,?) ";
-	
+	private static final String checklogin="select type_of_user from login where user_email=? and password=?";
 	public Ngo getNgo(String email)
 	{
 		Ngo obj=null;
@@ -66,6 +67,33 @@ public class NgoDao {
 		return result;
 	}
 	
+	public ArrayList<Ngo> getAcceptedNgo()
+	{
+		ArrayList<Ngo> result=new ArrayList<Ngo>();
+		try
+		{
+			Connection con=DBConnection.getConnection();
+			PreparedStatement pstmt=con.prepareStatement(getAcceptedNgo);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				String User_email=rs.getString(1);
+				String Name=rs.getString(2);
+				String Address=rs.getString(3);
+				String Mobile_Number=rs.getString(4);
+				String Document_Link=rs.getString(5);
+				String Status=rs.getString(6);
+				Ngo obj=new Ngo(User_email, Name, Address, Mobile_Number, Document_Link,Status);
+				result.add(obj);
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("getAcceptedNgo "+e);
+		}
+		return result;
+	}
+	
 	public void delete(String email)
 	{
 		try
@@ -74,6 +102,7 @@ public class NgoDao {
 			PreparedStatement pstmt=con.prepareStatement(deleteNgo);
 			pstmt.setString(1, email);
 			pstmt.executeUpdate();
+			
 		}
 		catch(Exception e)
 		{
@@ -170,4 +199,110 @@ public class NgoDao {
 		}
 		return res;
 	}
+	
+	
+	public ArrayList<String> requestDescription(int id)
+	{
+		ArrayList<String> res=new ArrayList<String>();
+		String getRequest="select type_of_request , total_quantity , balance_quantity , measurements , expected_date , request_details from request where id = ? and status = ? ";
+		try
+		{
+			Connection con=DBConnection.getConnection();
+			PreparedStatement pstmt=con.prepareStatement(getRequest);
+			pstmt.setInt(1, id);
+			pstmt.setString(2,"Accepted");
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			res.add(rs.getString(1));
+			res.add(String.valueOf(rs.getInt(2))+" "+rs.getString(4));
+			res.add(String.valueOf(rs.getInt(3))+" "+rs.getString(4));
+			String date[]=String.valueOf(rs.getDate(5)).split("-");
+			String yyyy=date[0];String mm=date[1];String dd=date[2];
+			res.add(dd+"-"+mm+"-"+yyyy);
+			res.add(rs.getString(6));
+		}
+		catch(Exception e)
+		{
+			System.out.println("requestDescription "+e);
+		}
+		return res;
+	}
+	public boolean checkLogin(String mailid,String password,String user)
+	{
+		try
+		{
+			Connection con=DBConnection.getConnection();
+			PreparedStatement pstmt=con.prepareStatement(checklogin);
+			pstmt.setString(1, mailid);
+			pstmt.setString(2, password);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next())
+			{
+				if(rs.getString("type_of_user").equals(user))
+					return true;
+			}
+			return false;
+				
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("checkLogin"+e);
+		}
+		return false;
+	}
+  
+	public ArrayList<ArrayList<String>> ngoHistory(String mailid)
+	{
+		ArrayList<ArrayList<String>> ans=new ArrayList<ArrayList<String>>();	
+		try
+		{
+			Connection con=DBConnection.getConnection();
+			String query1="SELECT id,type_of_request,total_quantity,measurements FROM `request` WHERE ngo_email=?";
+			
+			PreparedStatement pstmt=con.prepareStatement(query1);
+			pstmt.setString(1, mailid);
+			System.out.println("1");
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				ArrayList<String> temp=new ArrayList<String>();
+				
+				String query2="SELECT donor_email,donated_quantity FROM `donation` WHERE donation_id=?";
+				pstmt=con.prepareStatement(query2);
+				
+				pstmt.setInt(1,rs.getInt("id"));
+				System.out.println("2");
+				ResultSet rs1=pstmt.executeQuery();
+				//rs1.first();
+				while(rs1.next())
+				{   
+					temp.add(rs.getString("type_of_request"));
+					temp.add(rs.getInt("total_quantity")+" "+rs.getString("measurements"));
+					temp.add(rs1.getInt("donated_quantity")+" "+rs.getString("measurements"));
+					String query3="SELECT Name,Mobile_Number FROM `donor` WHERE User_email=?"; 
+					pstmt=con.prepareStatement(query3);
+					pstmt.setString(1,rs1.getString("donor_email"));
+					System.out.println("3");
+					ResultSet rs2=pstmt.executeQuery();
+					if(rs2.next())
+					{
+						temp.add(rs2.getString("Name"));
+						temp.add(rs1.getString("donor_email"));
+						temp.add(rs2.getString("Mobile_Number"));
+					}
+					
+				}
+				System.out.println(temp.size());
+				ans.add(temp);
+			}
+	    
+		}
+		catch(Exception e)
+		{
+			System.out.println("ngoHistory "+e);
+		}
+		return ans;
+	}
+
 }

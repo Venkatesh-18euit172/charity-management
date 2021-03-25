@@ -26,7 +26,7 @@ public class Donate extends HttpServlet {
    		String donation_details[]=request.getParameter("details").split("\\?");
    		
 	   	String ngo_email=donation_details[0];
-	 	String donor_email="18euit157@skcet.ac.in";
+	 	String donor_email=(String)session.getAttribute("donormailid");
 	 	int donated_quantity=Integer.parseInt(donation_details[1]);
 	 	String measurements=donation_details[2];
 	 	int donation_id=Integer.parseInt(donation_details[3]);
