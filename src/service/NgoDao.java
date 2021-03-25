@@ -11,7 +11,6 @@ public class NgoDao {
 
 	private static final String getNgo="select * from ngo where User_email = ? ";
 	private static final String deleteNgo="Delete from ngo where User_email = ? ";
-	private static final String deleteNgo_login="Delete from login where user_email = ? ";
 	private static final String getAllNgo="select * from ngo";
 	private static final String storeLogin="insert into login values (?,?,?) ";
 	
@@ -73,9 +72,6 @@ public class NgoDao {
 		{
 			Connection con=DBConnection.getConnection();
 			PreparedStatement pstmt=con.prepareStatement(deleteNgo);
-			pstmt.setString(1, email);
-			pstmt.executeUpdate();
-			pstmt=con.prepareStatement(deleteNgo_login);
 			pstmt.setString(1, email);
 			pstmt.executeUpdate();
 		}

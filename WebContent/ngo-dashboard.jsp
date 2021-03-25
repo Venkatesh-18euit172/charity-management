@@ -29,7 +29,7 @@
 	                        
 	                         <a href="request.jsp" class="nav__link">
 	                            <ion-icon name="add-circle-outline" class="nav__icon"></ion-icon>
-	                            <span class="nav__name">Rise Request</span>
+	                            <span class="nav__name">Raise Request</span>
 	                        </a>
 	
 	                        <a href="ngo-request.jsp" class="nav__link">
