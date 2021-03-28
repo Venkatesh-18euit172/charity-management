@@ -32,7 +32,7 @@ public class Donate extends HttpServlet {
 	 	int donation_id=Integer.parseInt(donation_details[3]);
 	 	Date donated_date=Date.valueOf(donation_details[4]);
 
-   		Donation donation=new Donation(ngo_email, donor_email, donated_quantity, measurements, donation_id, donated_date);
+   		Donation donation=new Donation(ngo_email, donor_email, donated_quantity, measurements, donation_id, donated_date,"waiting");
    		
    		new DonorDao().donate(donation);
 	}

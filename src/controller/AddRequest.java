@@ -29,7 +29,7 @@ public class AddRequest extends HttpServlet {
 		for(int i=0;i<count;i++)
 		{
 			
-			String ngo_email=(String)session.getAttribute("mailid");
+			String ngo_email=(String)session.getAttribute("ngomailid");
 			String type_of_request=request.getParameter("request_"+i);
 			int total_quantity=Integer.parseInt(request.getParameter("quantity_"+i));
 			String measurements=request.getParameter("measurement_"+i);

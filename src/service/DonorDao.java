@@ -42,7 +42,7 @@ public class DonorDao {
 	{
 		try
 		{
-			String query="insert into donation(ngo_email,donor_email,donated_quantity,measurements,donation_id,donated_date) values(?,?,?,?,?,?)";
+			String query="insert into donation(ngo_email,donor_email,donated_quantity,measurements,donation_id,donated_date,status) values(?,?,?,?,?,?,?)";
 			Connection con=DBConnection.getConnection();
 			PreparedStatement pstmt=con.prepareStatement(query);
 			pstmt.setString(1,obj.getNgo_email());
@@ -51,29 +51,10 @@ public class DonorDao {
 			pstmt.setString(4, obj.getMeasurements());
 			pstmt.setInt(5, obj.getDonation_id());
 			pstmt.setDate(6, obj.getDonated_date());
+			pstmt.setString(7,obj.getStatus());
 			pstmt.executeUpdate();
 
-			String query1="select balance_quantity from request where id = ?";
-			pstmt=con.prepareStatement(query1);
-			pstmt.setInt(1, obj.getDonation_id());
-			ResultSet rs=pstmt.executeQuery();
-			rs.next();
-			int balance=rs.getInt(1)-obj.getDonated_quantity();
-			if(balance<=0)
-			{
-				String query2="Update request set status = 'Accepted' where id = ?";
-				pstmt=con.prepareStatement(query2);
-				pstmt.setInt(1, obj.getDonation_id());
-				pstmt.executeUpdate();
-			}
-			else
-			{
-				String query2="Update request set balance_quantity = ? where id = ?";
-				pstmt=con.prepareStatement(query2);
-				pstmt.setInt(1, balance);
-				pstmt.setInt(2, obj.getDonation_id());
-				pstmt.executeUpdate();
-			}
+			
 		}
 		catch(Exception e)
 		{

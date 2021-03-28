@@ -274,7 +274,7 @@ public class NgoDao {
 				pstmt.setInt(1,rs.getInt("id"));
 				System.out.println("2");
 				ResultSet rs1=pstmt.executeQuery();
-				//rs1.first();
+				
 				while(rs1.next())
 				{   
 					temp.add(rs.getString("type_of_request"));
@@ -293,7 +293,13 @@ public class NgoDao {
 					}
 					
 				}
+				for(String i:temp)
+				{
+					System.out.println(i);
+				}
 				System.out.println(temp.size());
+				if(temp.size()==0)
+					 continue;
 				ans.add(temp);
 			}
 	    
@@ -304,5 +310,99 @@ public class NgoDao {
 		}
 		return ans;
 	}
-
+   
+	
+	public ArrayList<ArrayList<String>> receivedDonation(String mailid)
+	{
+		ArrayList<ArrayList<String>> ans=new ArrayList<ArrayList<String>>();	
+		try
+		{
+			Connection con=DBConnection.getConnection();
+			String query1="SELECT donor_email,donation_id,donated_quantity,measurements,donated_date,id FROM `donation` WHERE ngo_email=? and status='waiting'";
+			
+			PreparedStatement pstmt=con.prepareStatement(query1);
+			pstmt.setString(1, mailid);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+	            
+				ArrayList<String> temp=new ArrayList<String>();
+				String query2="SELECT type_of_request,total_quantity FROM `request` WHERE id=?";
+				pstmt=con.prepareStatement(query2);
+				
+				pstmt.setInt(1,rs.getInt("donation_id"));
+		    	ResultSet rs1=pstmt.executeQuery();
+				rs1.next();
+		    	String query3="SELECT Name,Address,Mobile_Number FROM `donor` WHERE User_email=?";
+		    	pstmt=con.prepareStatement(query3);
+		    	pstmt.setString(1, rs.getString("donor_email"));
+		    	ResultSet rs2=pstmt.executeQuery();
+		    	rs2.next();
+		    	temp.add(rs1.getString("type_of_request"));
+		    	temp.add(rs1.getString("total_quantity")+" "+rs.getString("measurements"));
+		    	temp.add(rs.getString("donated_quantity")+" "+rs.getString("measurements"));
+		    	temp.add(rs.getString("donated_date"));
+		    	temp.add(rs.getString("donor_email"));
+		    	temp.add(rs2.getString("Name"));
+		    	temp.add(rs2.getString("Mobile_Number"));
+		    	temp.add(rs.getInt("id")+"");
+				ans.add(temp);
+			}
+	    
+		}
+		catch(Exception e)
+		{
+			System.out.println("receivedDonation "+e);
+		}
+		return ans;
+	}
+    
+	
+	public void acceptedDonation(int id,int donatedquantity)
+	{
+		try
+		{   
+			String query="Update donation set status='received' where id=?";
+			Connection con=DBConnection.getConnection();
+			PreparedStatement pstmt=con.prepareStatement(query);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+			String query0="select donation_id from donation where id=?";
+			pstmt=con.prepareStatement(query0);
+			pstmt.setInt(1, id);
+			ResultSet rs0=pstmt.executeQuery();
+			rs0.next();
+			int donationid=rs0.getInt("donation_id");
+			String query1="select balance_quantity from request where id = ?";
+			pstmt=con.prepareStatement(query1);
+			pstmt.setInt(1, donationid);
+			ResultSet rs=pstmt.executeQuery();
+			rs.next();
+			int balance=rs.getInt(1)-donatedquantity;
+			System.out.println(rs.getInt(1)+" "+donatedquantity+" "+balance);
+			if(balance<=0)
+			{
+				String query2="Update request set status = 'Accepted',balance_quantity = ? where id = ?";
+				pstmt=con.prepareStatement(query2);
+				pstmt.setInt(1, 0);
+				pstmt.setInt(2, donationid);
+				pstmt.executeUpdate();
+			}
+			else
+			{
+				String query2="Update request set balance_quantity = ? where id = ?";
+				pstmt=con.prepareStatement(query2);
+				pstmt.setInt(1, balance);
+				pstmt.setInt(2, donationid);
+				pstmt.executeUpdate();
+			}	
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("acceptedDonation "+e);
+		}
+		
+	}
+  
 }

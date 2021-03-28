@@ -37,6 +37,11 @@
 	                            <ion-icon name="eye-outline" class="nav__icon"></ion-icon>
 	                            <span class="nav__name">Pending Requests</span>
 	                        </a>
+	                        
+	                        <a href="received-donation.jsp" class="nav__link">
+	                            <ion-icon name="checkbox-outline" class="nav__icon"></ion-icon>
+	                            <span class="nav__name">Confirm Donations</span>
+	                        </a>
 	                       
 	                       <a href="successful-donations.jsp" class="nav__link">
 	                            <ion-icon name="ribbon-outline" class="nav__icon"></ion-icon>
