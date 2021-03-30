@@ -13,6 +13,9 @@
 		<title>Admin Dashboard</title>
 	</head>
 	<body id="body-pd">
+	
+	<img alt="Welcome" src="assests//welcome.jpg" width=1000px height=680px style="margin-left:100px">
+	
 	<div class="l-navbar" id="navbar">
 	            <nav class="nav">
 	                <div>
@@ -48,7 +51,7 @@
 	                    </div>
 	                </div>
 	
-	                <a href="Logout" class="nav__link">
+	                <a href="AdminLogout" class="nav__link">
 	                    <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
 	                    <span class="nav__name">Log Out</span>
 	                </a>

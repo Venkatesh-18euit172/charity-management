@@ -31,7 +31,7 @@
 			ArrayList<String> requestDetails=(ArrayList<String>)request.getAttribute("Request Details");
 			
 		%>
-		<div style="left:50;margin-left: auto; margin-right: auto; width:45%; display: inline-block; border-radius: 10px; background:linear-gradient(to bottom, #66ff99 0%, #00ccff 100%); text-align: center;">
+		<div style="left:50;margin-left: 410px; width:45%; display: inline-block; border-radius: 10px; background:linear-gradient(to bottom, #66ff99 0%, #00ccff 100%); text-align: center;">
 			<div class="event" style="width: 100%; text-align: center; padding: 10px 0;">
 		
 				<h5 style="color: #blue;font-family: verdana;font-size: 20px;">Type of Request : <%=requestDetails.get(0) %></h5>
@@ -46,13 +46,13 @@
 		
 		<table style = "margin-left: auto; margin-right: auto;">
 		     <tr> 
-		        <td style= "width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center> S.No </center></td>
-		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center> Donation Quantity</center> </td>
-		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center>  Donation Date</center>  </td> 
-		        <td style= "width : 200px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center>Name</center> </td> 
-		        <td style= "width : 300px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center>Address</center> </td> 
-		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center> Mobile Number</center> </td> 
-		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"> <center>Email ID</center> </td>
+		        <td style= "width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center> S.No </center></td>
+		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center> Donation Quantity</center> </td>
+		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center>  Donation Date</center>  </td> 
+		        <td style= "width : 200px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center>Name</center> </td> 
+		        <td style= "width : 300px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center>Address</center> </td> 
+		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center> Mobile Number</center> </td> 
+		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"> <center>Email ID</center> </td>
 		            </tr>	
 		<%
 		ArrayList<ArrayList<String>> allDonation = (ArrayList<ArrayList<String>>) request.getAttribute("Donation-List");
@@ -61,13 +61,13 @@
 		i++;
 		%>
 		     <tr> 
-		        <td style= "width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><center> <%= i %> </center></td>
-		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><center> <%=donor.get(1) %></center> </td>
-		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><center>  <%=donor.get(2) %></center>  </td> 
-		        <td style= "width : 200px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><center><%=donor.get(3) %></center> </td> 
-		        <td style= "width : 300px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><center><%=donor.get(4) %></center> </td> 
-		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><center> <%=donor.get(5) %></center> </td> 
-		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"> <center><%=donor.get(0) %></center> </td>
+		        <td style= "width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><center> <%= i %> </center></td>
+		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><center> <%=donor.get(1) %></center> </td>
+		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><center>  <%=donor.get(2) %></center>  </td> 
+		        <td style= "width : 200px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><center><%=donor.get(3) %></center> </td> 
+		        <td style= "width : 300px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><center><%=donor.get(4) %></center> </td> 
+		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><center> <%=donor.get(5) %></center> </td> 
+		        <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"> <center><%=donor.get(0) %></center> </td>
 		         </tr>	
 			
 		<% }%>
@@ -95,6 +95,11 @@
 	                        <a href="ngo-request.jsp" class="nav__link">
 	                            <ion-icon name="eye-outline" class="nav__icon"></ion-icon>
 	                            <span class="nav__name">Pending Requests</span>
+	                        </a>
+	                        
+	                        <a href="received-donation.jsp" class="nav__link">
+	                            <ion-icon name="checkbox-outline" class="nav__icon"></ion-icon>
+	                            <span class="nav__name">Confirm Donations</span>
 	                        </a>
 	                        
 	                         <a href="successful-donations.jsp" class="nav__link">

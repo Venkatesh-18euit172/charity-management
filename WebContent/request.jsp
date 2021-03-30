@@ -20,25 +20,25 @@
 			function createfield()
 			{
 				var count=document.getElementById("no_of_request").value;
-				var a="<table><tr><td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 1px;\"><center>S N0 </center></td><td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 1px;\"><center> Items </center></td>"+
-				"<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 1px;\"><center>Quantity</center></td>"+
-				"<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 1px;\"><center>Donation Required Before</center></td>"+
-				"<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 1px;\"><center>Description(Optional)</center></td>"+
+				var a="<table><tr><td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 1px;\"><center>S N0 </center></td><td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 1px;\"><center> Items </center></td>"+
+				"<td style= \"height:30px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 1px;\"><center>Quantity</center></td>"+
+				"<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 1px;\"><center>Donation Required Before</center></td>"+
+				"<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 1px;\"><center>Description(Optional)</center></td>"+
 				"</tr>";
 				for(i=0;i<parseInt(count);i++)
 				{
 					a+="<tr>";
-					a+="<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;\">"+(i+1)+"</td>";
-					a+="<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;\"><input type=\"text\" name=\"request_"+i+"\" id=\"request_"+i+"\"></input></td>";
-					a+="<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;\"><input type=\"text\" name=\"quantity_"+i+"\" id=\"quantity_"+i+"\"></input>"+
+					a+="<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;\">"+(i+1)+"</td>";
+					a+="<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;\"><input type=\"text\" name=\"request_"+i+"\" id=\"request_"+i+"\"></input></td>";
+					a+="<td style= \"height:30px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;\"><input type=\"text\" name=\"quantity_"+i+"\" id=\"quantity_"+i+"\"></input>"+" "+
 					"<select name=\"measurement_"+i+"\" id=\"measurement_"+i+"\">"+ 
 					"<option>Select</option>"+
 					"<option value=\"Rupee\">Rupee</option>"+
 					"<option value=\"Person\">Person</option>"+
 					"<option value=\"Kg\">Kg</option>"+
 					"<option value=\"Piece\">Piece</option></select></td>";
-					a+="<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;\"><input  type=\"date\" name=\"date_"+i+"\"></input></td>";
-					a+="<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;\"> <textarea name=\"description_"+i+"\"rows=5 cols=30></textarea></td>";
+					a+="<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;\"><input  type=\"date\" name=\"date_"+i+"\"></input></td>";
+					a+="<td style= \"height:30px;width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;\"> <textarea name=\"description_"+i+"\"rows=5 cols=30></textarea></td>";
 					a+="</tr>";
 				}
 				document.getElementById("request").innerHTML=a;
@@ -47,11 +47,11 @@
 		</head>
 	<body id="body-pd">
 		<form id="from1" action="AddRequest" method="post">
-		Enter the number of Items : 
-		<input type="text" id="no_of_request" name="no_of_request" />
-		<button type="button" onclick="createfield()">Items</button><br><br>
+		<font style="margin-left: 10px;margin-top: 10px;font-color: #696969"> <b> Enter the number of Items :</b></font> 
+		<input style="border-radius: 5px ;height: 20px;border-width: 0px; margin-left: 10px; width: 200px;background-color: #F0FFF0;padding: 10px;margin-top: 20px;" type="text" id="no_of_request" name="no_of_request" />
+		<button style="border-radius: 5px ;height: 25px;border-width: 0px; width: 100px;background: #38b6ff;margin-top: 10px;color: #ffffff;" type="button" onclick="createfield()">Items</button><br><br>
 		<div id="request"></div> <br><br>
-		<input type="submit"/> 
+		<input style="border-radius: 5px ;height: 25px;border-width: 0px; margin-left: 140px; width: 100px;background: #38b6ff;margin-top: 10px;color: #ffffff;" type="submit"/> 
 		</form>
 		<script type="text/javascript">
 			document.querySelector('#from1').addEventListener('submit', function(e) {

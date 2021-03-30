@@ -88,15 +88,15 @@
 		   	
 		   	<table>
 		          	<tr> 
-		                <td style= "width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center> S.No </center></td>
-		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center> Items</center> </td>
-		                <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center> Required Quantity</center>  </td> 
-		                <td style= "width : 50px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center>Donation Quantity</center> </td> 
-		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center>Expected Date</center> </td> 
-		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"><center> Donation Date</center> </td> 
-		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"> <center>Request Details</center> </td>
-		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"> <center>NGO Details</center></td>
-		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFFF99;padding: 10px;"> <center>Donate </center></td>
+		                <td style= "width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color:#3377ff;padding: 10px;"><center> S.No </center></td>
+		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color:#3377ff;padding: 10px;"><center> Items</center> </td>
+		                <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center> Required Quantity</center>  </td> 
+		                <td style= "border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center>Donation Quantity</center> </td> 
+		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center>Expected Date</center> </td> 
+		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"><center> Donation Date</center> </td> 
+		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"> <center>Request Details</center> </td>
+		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"> <center>NGO Details</center></td>
+		                <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #3377ff;padding: 10px;"> <center>Donate </center></td>
 		            </tr>	
 		             
 		   <%for(int i=0;i<req.size();i++)
@@ -104,18 +104,18 @@
 				String date[]=String.valueOf(req.get(i).getExpected_date()).split("-");
 				String yyyy=date[0];String mm=date[1];String dd=date[2];
 			   %>
-			   	<tr> <td style= "width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"> <%=i+1 %> </td> 
-	            <td style= "width : 200px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><%=req.get(i).getType_of_request()%></td>
-	            <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><%=req.get(i).getBalance_quantity()%><%out.print(" ");%><%=req.get(i).getMeasurements()%></td>
-	            <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><input type="text" id="donation_quantity_<%=req.get(i).getId()%>"><%=req.get(i).getMeasurements() %></td>
-	            <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><%=dd%>-<%=mm%>-<%=yyyy%></td>
-	            <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"><input type="date" id="donation_date_<%=req.get(i).getId()%>"></td>
-	            <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"> 
+			   	<tr> <td style= "width : 70px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color:#b3ccff;padding: 10px;"> <%=i+1 %> </td> 
+	            <td style= "width : 200px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><%=req.get(i).getType_of_request()%></td>
+	            <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><%=req.get(i).getBalance_quantity()%><%out.print(" ");%><%=req.get(i).getMeasurements()%></td>
+	            <td style= "border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><input type="text" id="donation_quantity_<%=req.get(i).getId()%>"><%out.print("  ");%><%=req.get(i).getMeasurements() %></td>
+	            <td style= "width : 150px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><%=dd%>-<%=mm%>-<%=yyyy%></td>
+	            <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"><input type="date" id="donation_date_<%=req.get(i).getId()%>"></td>
+	            <td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"> 
 	            <button style="color: red; border-radius: 5px;border-width: 0px;background-color: #ffffff;padding: 7px;" onclick='display("<%=req.get(i).getRequest_details()%>")' > Request Details </button></td>
-				<td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"> 
+				<td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"> 
 				<button style="color: red; border-radius: 5px;border-width: 0px;background-color: #ffffff;padding: 7px;"  onclick='details("<%=req.get(i).getNgo_email()%>")' >NGO Detail</button> 
 				</td>
-				<td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #FFC0CB;padding: 10px;"> 
+				<td style= "width : 100px;border: 1px ;border-collapse: collapse;border-color: #FFFF99;background-color: #b3ccff;padding: 10px;"> 
 				<button onclick='donate("<%=req.get(i).getId()%>","<%=req.get(i).getNgo_email() %>","<%=req.get(i).getMeasurements()%>")' style="color: red; border-radius: 5px;border-width: 0px;background-color: #ffffff;padding: 10px;">Donate</button>
 				</td>	            
 	            </tr>

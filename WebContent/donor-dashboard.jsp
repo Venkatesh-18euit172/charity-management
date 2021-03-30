@@ -16,6 +16,7 @@
 	</head>
 	<body id="body-pd">
 	
+	<img alt="Welcome" src="assests//welcome.jpg" width=1000px height=680px style="margin-left:100px">
     
 	<div class="l-navbar" id="navbar">
 	            <nav class="nav">

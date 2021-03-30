@@ -329,7 +329,7 @@ public class NgoDao {
 				ArrayList<String> temp=new ArrayList<String>();
 				String query2="SELECT type_of_request,total_quantity FROM `request` WHERE id=?";
 				pstmt=con.prepareStatement(query2);
-				
+				System.out.println(rs.getInt("donation_id"));
 				pstmt.setInt(1,rs.getInt("donation_id"));
 		    	ResultSet rs1=pstmt.executeQuery();
 				rs1.next();
@@ -346,6 +346,8 @@ public class NgoDao {
 		    	temp.add(rs2.getString("Name"));
 		    	temp.add(rs2.getString("Mobile_Number"));
 		    	temp.add(rs.getInt("id")+"");
+		    	for(String i:temp)
+		    		System.out.println(i);
 				ans.add(temp);
 			}
 	    

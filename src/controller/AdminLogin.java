@@ -29,10 +29,5 @@ public class AdminLogin extends HttpServlet {
 		{
 			response.sendRedirect("admin-login.jsp");
 		}
-		
-		
-	
-		
 	}
-
 }

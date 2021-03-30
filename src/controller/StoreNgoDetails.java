@@ -24,8 +24,7 @@ public class StoreNgoDetails extends HttpServlet {
 		HttpSession session=request.getSession();
 		Ngo obj1=new Ngo(details[0],details[1],details[2],details[3],details[4],(String)session.getAttribute("password"));
 		obj.storeNgoDetails(obj1);
-		
+		response.sendRedirect("login.jsp");
 		
 	}
-
 }
